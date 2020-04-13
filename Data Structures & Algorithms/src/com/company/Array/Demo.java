@@ -8,7 +8,10 @@ public class Demo {
         numbers.insert(30);
         numbers.insert(40);
         numbers.removeAt(1);
-        System.out.println(numbers.indexOf(20));
+        numbers.insertAt(50, 3);
         numbers.print();
+        System.out.println("\n" + numbers.indexOf(20));
+        System.out.println("\n" + numbers.max() + "\n");
+        numbers.reverse().print();
     }
 }

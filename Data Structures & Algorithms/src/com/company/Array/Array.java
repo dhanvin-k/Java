@@ -30,7 +30,7 @@ public class Array {
     }
 
     public int indexOf(int item) {
-        for(int i = 0; i<count; i++) {
+        for (int i = 0; i<count; i++) {
             if (items[i] == item)
                 return i;
         }
@@ -38,7 +38,56 @@ public class Array {
     }
 
     public void print() {
-        for(int i = 0; i < count; i++)
+        for (int i = 0; i < count; i++)
             System.out.println(items[i]);
+    }
+
+    public int max() {
+        int max = items[0];
+        for (int item:items) {
+            if (max < item)
+                max = item;
+        }
+        return max;
+    }
+
+    public Array intersect(Array other) {
+        var intersection = new Array(count);
+        for (int item:items) {
+            if (other.indexOf(item) >= 0)
+                intersection.insert(item);
+        }
+        return intersection;
+    }
+
+    public Array reverse() {
+        var reversed = new Array(count);
+        for (int i = 0; i < count; i++)
+            reversed.insert(items[count - i - 1]);
+        return reversed;
+    }
+
+    private void resizeIfRequired() {
+        if (items.length == count) {
+            int[] newItems = new int[count * 2];
+
+            for (int i = 0; i < count; i++)
+                newItems[i] = items[i];
+
+            items = newItems;
+        }
+    }
+
+    public void insertAt(int item, int index) {
+        if (index < 0 || index > count)
+            throw new IllegalArgumentException();
+
+        resizeIfRequired();
+
+        for (int i = count - 1; i >= index; i--)
+            items[i+1] = items[i];
+
+        items[index] = item;
+        count++;
     }
 }
