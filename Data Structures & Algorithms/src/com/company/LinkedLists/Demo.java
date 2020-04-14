@@ -1,5 +1,7 @@
 package com.company.LinkedLists;
 
+import java.util.Arrays;
+
 public class Demo {
     public static void show() {
         var list = new LinkedList();
@@ -7,17 +9,18 @@ public class Demo {
         list.addLast(10);
         list.addLast(20);
         list.addLast(30);
-
-        list.addFirst(5);
-
-        list.removeFirst();
-
-        list.removeLast();
+        list.addLast(40);
+        list.addLast(50);
 
         list.print();
 
-        System.out.println(list.indexOf(20));
+        list.removeAt(3);
 
-        System.out.println(list.contains(30));
+        list.print();
+
+        list.printMiddle();
+
+//        list = LinkedList.createWithLoop();
+//        System.out.println(list.hasLoop());
     }
 }
