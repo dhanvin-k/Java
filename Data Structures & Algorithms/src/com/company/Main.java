@@ -1,7 +1,8 @@
 package com.company;
 
 //import com.company.Array.Demo;
-import com.company.LinkedLists.Demo;
+//import com.company.LinkedLists.Demo;
+import com.company.Stacks.Demo;
 
 public class Main {
 
