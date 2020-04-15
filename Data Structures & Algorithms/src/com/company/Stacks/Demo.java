@@ -4,13 +4,12 @@ import java.util.Stack;
 
 public class Demo {
     public static void show() {
+        // String Reversal
         System.out.println(StringReverser.reverser("abcd"));
 
-        System.out.println("(1+1): " + BalancedStringChecker.isBalanced("(1+1)"));
-        System.out.println("(1+1)): " + BalancedStringChecker.isBalanced("(1+1))"));
-        System.out.println("([{<1> + <1>}]): " + BalancedStringChecker.isBalanced("([{<1> + <1>}])"));
-        System.out.println("(1+1)]): " + BalancedStringChecker.isBalanced("(1+1)])"));
-        System.out.println("((([1+1): " + BalancedStringChecker.isBalanced("((([1+1)"));
-        System.out.println("(1+1) [1+1]: " + BalancedStringChecker.isBalanced("(1+1) [1+1]"));
+        // Balanced Expressions
+        System.out.println(BalancedStringChecker.isBalanced("[(1+1)"));
+
+        
     }
 }
