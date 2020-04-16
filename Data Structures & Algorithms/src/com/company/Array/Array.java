@@ -9,13 +9,7 @@ public class Array {
     }
 
     public void insert(int item) {
-        if (items.length == count) {
-            int[] newArray = new int[2*count];
-            for (int i = 0; i < count; i++)
-                newArray[i] = items[i];
-            items = newArray;
-        }
-
+        resizeIfRequired();
         items[count++] = item;
     }
 

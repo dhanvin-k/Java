@@ -1,15 +1,16 @@
 package com.company.Stacks;
 
-import java.util.Stack;
+import java.util.Arrays;
 
 public class Demo {
     public static void show() {
-        // String Reversal
-        System.out.println(StringReverser.reverser("abcd"));
-
-        // Balanced Expressions
-        System.out.println(BalancedStringChecker.isBalanced("[(1+1)"));
-
-        
+        var stack = new Stack(5);
+        stack.push(4);
+        stack.push(9);
+        stack.push(2);
+        stack.push(1);
+        stack.push(5);
+        stack.pop();
+        System.out.println(stack.getMinInStack());
     }
 }
