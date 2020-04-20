@@ -1,9 +1,10 @@
 package com.company.Queue;
 
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Queue;
 
-public class StackUsingTwoQueues {
+public class StackWithTwoQueues {
     private Queue<Integer> queue1 = new ArrayDeque<Integer>();
     private Queue<Integer> queue2 = new ArrayDeque<Integer>();
     private int top;
@@ -22,7 +23,7 @@ public class StackUsingTwoQueues {
 
         swapQueues();
 
-        return queue1.remove();
+        return queue2.remove();
     }
 
     public int peek() {
@@ -40,4 +41,9 @@ public class StackUsingTwoQueues {
 
     public boolean isEmpty() { return queue1.size() == 0; }
     public int size() { return queue1.size(); }
+
+    @Override
+    public String toString() {
+        return queue1.toString();
+    }
 }
