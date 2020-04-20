@@ -11,6 +11,6 @@ public class Demo {
         queue.pop();
         var top = queue.pop();
         System.out.println(queue);
-        System.out.println(top);
+        System.out.println(queue.isEmpty());
     }
 }

@@ -18,8 +18,10 @@ public class StackWithTwoQueues {
         if (isEmpty())
             throw new IllegalStateException();
 
-        while (queue1.size() > 1)
-            queue2.add(queue1.remove());
+        while (queue1.size() > 1) {
+            top = queue1.remove();
+            queue2.add(top);
+        }
 
         swapQueues();
 
