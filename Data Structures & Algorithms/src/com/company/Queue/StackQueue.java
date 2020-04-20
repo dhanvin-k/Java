@@ -41,4 +41,5 @@ public class StackQueue {
     }
 
     public boolean isEmpty() { return stack1.empty() && stack2.empty(); }
+    public int getSize() { return count; }
 }
