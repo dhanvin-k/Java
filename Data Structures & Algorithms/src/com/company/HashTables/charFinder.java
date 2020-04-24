@@ -1,7 +1,9 @@
 package com.company.HashTables;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class charFinder {
     public static char findFirstNonRepeatedChar(String input) {
@@ -18,5 +20,19 @@ public class charFinder {
                 return ch;
 
         return Character.MAX_VALUE;
+    }
+
+    public static char findFirstRepeatedChar(String input) {
+        Set<Character> set = new HashSet<Character>();
+
+        var stringArray = input.toCharArray();
+        for (char ch : stringArray){
+            if (set.contains(ch))
+                return ch;
+
+            set.add(ch);
+        }
+
+        return Character.MIN_VALUE;
     }
 }
