@@ -26,23 +26,49 @@ public class HashTable {
     }
 
     public void put(int key, String value) {
+        var entry = getEntry(key);
+        if (entry != null) {
+            entry.value = value;
+            return;
+        }
+
+        getOrCreateBucket(key).add(new keyValue(key, value));
+    }
+
+    public String get(int key) {
+        var entry = getEntry(key);
+        return (entry == null) ? null : entry.value;
+    }
+
+    public void remove(int key) {
+        var entry = getEntry(key);
+        if (entry == null)
+            throw new IllegalStateException();
+        getBucket(key).remove(entry);
+    }
+
+    private LinkedList<keyValue> getOrCreateBucket(int key) {
         var index = hash(key);
         if (entries[index] == null)
             entries[index] = new LinkedList<>();
 
-        for (var entry : entries[index]) {
-            if (entry.key == key) {
-                entry.value = value;
-                return;
+        return entries[index];
+    }
+
+    private keyValue getEntry(int key) {
+        var bucket = getBucket(key);
+        if (bucket != null) {
+            for (var entry : bucket) {
+                if (entry.key == key)
+                    return entry;
             }
         }
-
-        entries[index].add(new keyValue(key, value));
+        return null;
     }
 
-    private int hash(int key) {
-        return key % entries.length;
-    }
+    private LinkedList<keyValue> getBucket(int key) { return entries[hash(key)]; }
+
+    private int hash(int key) { return key % entries.length; }
 
     @Override
     public String toString() {
