@@ -55,4 +55,16 @@ public class HashTableExercises {
         }
         return count;
     }
+
+    public static int[] twoSum(int[] numbers, int target) {
+        Map<Integer, Integer> hashMap = new HashMap<>();
+        for (int i = 0; i<numbers.length; i++) {
+            int a = numbers[i];
+            int b = target - a;
+            if (hashMap.containsKey(b))
+                return new int[]{hashMap.get(b), i};
+            hashMap.put(numbers[i], i);
+        }
+        return null;
+    }
 }
