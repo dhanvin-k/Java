@@ -1,14 +1,13 @@
 package com.company.HashTables;
 
 import java.util.Arrays;
-import java.util.IllformedLocaleException;
 
 public class HashMap {
-    public class keyValue {
+    private class keyValue {
         private int key;
         private String value;
 
-        public keyValue(int key, String value) {
+        private keyValue(int key, String value) {
             this.key = key;
             this.value = value;
         }

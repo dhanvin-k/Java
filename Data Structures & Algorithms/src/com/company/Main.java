@@ -4,7 +4,8 @@ package com.company;
 //import com.company.LinkedLists.Demo;
 //import com.company.Stacks.Demo;
 //import com.company.Queue.Demo;
-import com.company.HashTables.Demo;
+//import com.company.HashTables.Demo;
+import com.company.BinaryTree.Demo;
 
 public class Main {
 
