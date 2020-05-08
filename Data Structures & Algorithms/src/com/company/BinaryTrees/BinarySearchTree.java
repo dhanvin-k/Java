@@ -1,9 +1,7 @@
 package com.company.BinaryTrees;
 
-import java.sql.Struct;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 public class BinarySearchTree {
     private class Node {
@@ -13,13 +11,11 @@ public class BinarySearchTree {
 
         public Node(int value) {
             this.value = value;
-            this.leftChild = leftChild;
-            this.rightChild = rightChild;
         }
 
         @Override
         public String toString() {
-            return "Node="+ value;
+            return "Node=" + value;
         }
     }
 
