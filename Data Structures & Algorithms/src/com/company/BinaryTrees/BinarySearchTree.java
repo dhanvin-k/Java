@@ -276,6 +276,23 @@ public class BinarySearchTree {
         return Math.min(minChild, root.value);
     }
 
+    public boolean isBalance() {
+        return isBalance(root);
+    }
+
+    private boolean isBalance(Node root) {
+        if (root == null)
+            return true;
+
+        return !(isLeftHeavy(root) || isRightHeavy(root)) && isBalance(root.leftChild) && isBalance(root.rightChild);
+    }
+
+    private boolean isLeftHeavy(Node root) { return balanceFactor(root) > 1; }
+
+    private boolean isRightHeavy(Node root) { return balanceFactor(root) < -1; }
+
+    private int balanceFactor(Node root) { return (root == null) ? 0 : height(root.leftChild) - height(root.rightChild); }
+
     public int height() {
         return height(root);
     }
