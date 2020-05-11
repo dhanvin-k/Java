@@ -276,6 +276,8 @@ public class BinarySearchTree {
         return Math.min(minChild, root.value);
     }
 
+    public boolean isPerfect() { return size() == Math.pow(2, height(root) + 1) - 1; }
+
     public boolean isBalance() {
         return isBalance(root);
     }

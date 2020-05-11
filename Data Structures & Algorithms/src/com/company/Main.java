@@ -5,8 +5,8 @@ package com.company;
 //import com.company.Stacks.Demo;
 //import com.company.Queue.Demo;
 //import com.company.HashTables.Demo;
-//import com.company.BinaryTrees.Demo;
-import com.company.AVLTrees.Demo;
+import com.company.BinaryTrees.Demo;
+//import com.company.AVLTrees.Demo;
 
 public class Main {
 

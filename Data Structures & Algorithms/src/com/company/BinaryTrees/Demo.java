@@ -11,7 +11,7 @@ public class Demo {
         tree.insert(8);
         tree.insert(10);
 
-        System.out.println(tree.isBalance());
+        System.out.println(tree.isPerfect());
         System.out.println("Done");
     }
 }
