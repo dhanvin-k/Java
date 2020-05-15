@@ -4,14 +4,14 @@ public class Demo {
     public static void show() {
         var heap = new Heaps(2);
 
-        heap.insert(100);
-        heap.insert(90);
-        heap.insert(80);
-        heap.insert(40);
-        heap.insert(120);
-        heap.insert(60);
-        heap.insert(70);
+        heap.insert(10);
+        heap.insert(5);
+        heap.insert(17);
+        heap.insert(4);
+        heap.insert(22);
+        System.out.println(heap);
 
+        System.out.println(heap.remove());
         System.out.println(heap);
     }
 }
