@@ -2,11 +2,13 @@ package com.company.Heaps;
 
 public class Heapify {
     public static void heapify(int[] array) {
-        for (int i = 0; i<array.length; i++)
+        var indexOfLastParent = array.length/2 - 1;
+        for (int i = indexOfLastParent; i>=0; i--)
             heapify(array, i);
     }
 
     private static void heapify(int[] array, int index) {
+        System.out.println("hello");
         int largerChildIndex = index;
         if (!isValidParent(array, index))
             largerChildIndex = getLargerChildIndex(array, index);
