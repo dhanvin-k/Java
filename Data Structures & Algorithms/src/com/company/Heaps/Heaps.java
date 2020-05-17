@@ -99,6 +99,13 @@ public class Heaps {
 
     public boolean isEmpty() { return count == 0; }
 
+    public int max() {
+        if (isEmpty())
+            throw new IllegalStateException();
+
+        return heap[0];
+    }
+
     @Override
     public String toString() {
         return Arrays.toString(heap);

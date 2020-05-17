@@ -1,6 +1,6 @@
 package com.company.Heaps;
 
-public class Heapify {
+public class MaxHeap {
     public static void heapify(int[] array) {
         var indexOfLastParent = array.length/2 - 1;
         for (int i = indexOfLastParent; i>=0; i--)
@@ -18,6 +18,20 @@ public class Heapify {
 
         swap(array, index, largerChildIndex);
         heapify(array, largerChildIndex);
+    }
+
+    public static int kThLargestItem(int[] array, int k) {
+        if (k<1 || k>array.length)
+            throw new IllegalStateException();
+
+        var heap = new Heaps(array.length);
+        for (int item : array)
+            heap.insert(item);
+
+        for (int i = 0; i < k-1; i++)
+            heap.remove();
+
+        return heap.max();
     }
 
     private static void swap(int[] array, int parentIndex, int childIndex) {
