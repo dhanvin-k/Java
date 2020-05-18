@@ -33,6 +33,17 @@ public class Heaps {
         return root;
     }
 
+    public boolean isMaxHeap() {
+        return isMaxHeap(0);
+    }
+
+    private boolean isMaxHeap(int index) {
+        if (index>(heap.length/2-1))
+            return true;
+
+        return isValidParent(index) && isMaxHeap(getLeftChildIndex(index)) && isMaxHeap(getRightChildIndex(index));
+    }
+
     private void bubbleUp() {
         var index = getIndex();
         while (index > 0 && heap[index] > parent(index)) {
@@ -95,16 +106,16 @@ public class Heaps {
 
     private int getIndex() { return count - 1; }
 
-    public boolean isFull() { return count == heap.length; }
-
-    public boolean isEmpty() { return count == 0; }
-
     public int max() {
         if (isEmpty())
             throw new IllegalStateException();
 
         return heap[0];
     }
+
+    public boolean isFull() { return count == heap.length; }
+
+    public boolean isEmpty() { return count == 0; }
 
     @Override
     public String toString() {

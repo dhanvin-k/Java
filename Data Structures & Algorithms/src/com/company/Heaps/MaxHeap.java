@@ -8,7 +8,6 @@ public class MaxHeap {
     }
 
     private static void heapify(int[] array, int index) {
-        System.out.println("hello");
         int largerChildIndex = index;
         if (!isValidParent(array, index))
             largerChildIndex = getLargerChildIndex(array, index);

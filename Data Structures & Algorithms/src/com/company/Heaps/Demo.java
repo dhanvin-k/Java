@@ -1,8 +1,17 @@
 package com.company.Heaps;
 
+import java.util.Arrays;
+
 public class Demo {
     public static void show() {
-        var numbers = new int[] {5, 3, 8, 4, 1, 2};
-        System.out.println(MaxHeap.kThLargestItem(numbers, 2));
+        var heap = new MinHeap(2);
+        heap.insert(7, "A");
+        heap.insert(4, "B");
+        heap.insert(3, "C");
+        heap.insert(9, "D");
+        heap.insert(6, "E");
+        System.out.println(heap);
+        System.out.println(heap.remove());
+        System.out.println(heap);
     }
 }
