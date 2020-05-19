@@ -82,9 +82,9 @@ public class Heaps {
         return isValid;
     }
 
-    private boolean hasLeftChild(int index) { return getLeftChildIndex(index)<=count; }
+    private boolean hasLeftChild(int index) { return getLeftChildIndex(index)<count; }
 
-    private boolean hasRightChild(int index) { return getRightChildIndex(index)<=count; }
+    private boolean hasRightChild(int index) { return getRightChildIndex(index)<count; }
 
     private int leftChild(int index) { return heap[getLeftChildIndex(index)]; }
 

@@ -43,7 +43,7 @@ public class MinHeap {
         }
     }
 
-    public Node remove() {
+    public String remove() {
         if (isEmpty())
             throw new IllegalStateException();
 
@@ -53,7 +53,7 @@ public class MinHeap {
 
         bubbleDown();
 
-        return root;
+        return root.value;
     }
 
     private void bubbleDown() {
@@ -63,6 +63,15 @@ public class MinHeap {
             swap(smallerChildIndex, index);
             index = smallerChildIndex;
         }
+    }
+
+    public boolean isMinHeap() { return isMinHeap(0); }
+
+    private boolean isMinHeap(int index) {
+        if (index > heap.length/2-1)
+            return true;
+
+        return isValidParent(index) && isMinHeap(leftChildIndex(index)) && isMinHeap(rightChildIndex(index));
     }
 
     private int getSmallerChildIndex(int index) {
@@ -79,9 +88,9 @@ public class MinHeap {
         if (!hasLeftChild(index))
             return true;
 
-        var isValid = heap[index].key <= leftChildIndex(index);
+        var isValid = heap[index].key <= leftChild(index);
         if (hasRightChild(index))
-            isValid &= heap[index].key <= rightChildIndex(index);
+            isValid &= heap[index].key <= rightChild(index);
 
         return isValid;
     }
@@ -90,9 +99,9 @@ public class MinHeap {
 
     private int rightChild(int index) { return heap[rightChildIndex(index)].key; }
 
-    private boolean hasLeftChild(int index) { return leftChildIndex(index) <= count; }
+    private boolean hasLeftChild(int index) { return leftChildIndex(index) < count; }
 
-    private boolean hasRightChild(int index) { return rightChildIndex(index) <= count; }
+    private boolean hasRightChild(int index) { return rightChildIndex(index) < count; }
 
     private int leftChildIndex(int index) { return 2*index+1; }
 
@@ -111,6 +120,13 @@ public class MinHeap {
     public boolean isEmpty() { return count == 0; }
 
     public boolean isFull() { return count == heap.length; }
+
+    public Node min() {
+        if (isEmpty())
+            throw new IllegalStateException();
+
+        return heap[0];
+    }
 
     @Override
     public String toString() {

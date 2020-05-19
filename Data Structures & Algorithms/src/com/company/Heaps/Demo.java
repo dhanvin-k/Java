@@ -4,14 +4,12 @@ import java.util.Arrays;
 
 public class Demo {
     public static void show() {
-        var heap = new MinHeap(2);
-        heap.insert(7, "A");
-        heap.insert(4, "B");
-        heap.insert(3, "C");
-        heap.insert(9, "D");
-        heap.insert(6, "E");
-        System.out.println(heap);
-        System.out.println(heap.remove());
-        System.out.println(heap);
+        var queue = new MinPriorityQueue(2);
+        queue.add(7, "A");
+        queue.add(4, "B");
+        queue.add(3, "C");
+        queue.add(9, "D");
+        queue.add(6, "E");
+        System.out.println(queue);
     }
 }
