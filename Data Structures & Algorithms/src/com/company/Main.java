@@ -7,7 +7,8 @@ package com.company;
 //import com.company.HashTables.Demo;
 //import com.company.BinaryTrees.Demo;
 //import com.company.AVLTrees.Demo;
-import com.company.Heaps.Demo;
+//import com.company.Heaps.Demo;
+import com.company.Tries.Demo;
 
 public class Main {
 
