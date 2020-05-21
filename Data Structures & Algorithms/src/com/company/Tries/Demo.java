@@ -6,6 +6,8 @@ public class Demo {
 
         trie.insert("cat");
         trie.insert("can");
+        System.out.println(trie.contains("canada"));
+
         System.out.println("Done");
     }
 }

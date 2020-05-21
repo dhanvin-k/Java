@@ -47,6 +47,18 @@ public class Tries {
         current.endWord();
     }
 
+    public boolean contains(String word) {
+        return word != null && contains(root, word, 0);
+    }
+
+    private boolean contains(Node root, String word, int index) {
+        if (index == word.length())
+            return root.isEndOfWord;
+
+        var ch = word.toCharArray()[index];
+        return root.hasChild(ch) && contains(root.getChild(ch), word, ++index);
+    }
+
     @Override
     public String toString() {
         return root.toString();
