@@ -1,5 +1,6 @@
 package com.company.Tries;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class Tries {
@@ -21,6 +22,8 @@ public class Tries {
         public Node getChild(char ch) { return children.get(ch); }
 
         public void endWord() { isEndOfWord = true; }
+
+        public Node[] getChildren() { return children.values().toArray(new Node[0]); }
 
         @Override
         public String toString() {
@@ -57,6 +60,27 @@ public class Tries {
 
         var ch = word.toCharArray()[index];
         return root.hasChild(ch) && contains(root.getChild(ch), word, ++index);
+    }
+
+    public void traversal(String type) {
+        if (type.toLowerCase() == "preorder")
+            traversalPreOrder(root);
+        else
+            traversalPostOrder(root);
+    }
+
+    private void traversalPreOrder(Node root) {
+        System.out.println(root.value);
+
+        for (var child : root.getChildren())
+            traversalPreOrder(child);
+    }
+
+    private void traversalPostOrder(Node root) {
+        for (var child : root.getChildren())
+            traversalPostOrder(child);
+
+        System.out.println(root.value);
     }
 
     @Override

@@ -4,10 +4,8 @@ public class Demo {
     public static void show() {
         var trie = new Tries();
 
-        trie.insert("cat");
-        trie.insert("can");
-        System.out.println(trie.contains("canada"));
-
+        trie.insert("care");
+        trie.traversal("preorder");
         System.out.println("Done");
     }
 }
