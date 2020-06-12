@@ -1,7 +1,8 @@
 package com.company.Tries;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Tries {
     public static int ALPHABET_SIZE = 26;
@@ -23,7 +24,17 @@ public class Tries {
 
         public void endWord() { isEndOfWord = true; }
 
+        public boolean isEndOfWord() {return isEndOfWord; }
+
+        public void removeWord() { isEndOfWord = false; }
+
         public Node[] getChildren() { return children.values().toArray(new Node[0]); }
+
+        public int numberOfChildren() { return children.size(); }
+
+        public boolean hasChildren() { return !children.isEmpty(); }
+
+        public void removeChar(char ch) { children.remove(ch); }
 
         @Override
         public String toString() {
@@ -50,6 +61,39 @@ public class Tries {
         current.endWord();
     }
 
+    public List<String> autoComplete(String prefix) {
+        List<String> words = new ArrayList<>();
+
+        autoComplete(findLastNodeOf(prefix), prefix, words);
+
+        return words;
+    }
+
+    private void autoComplete(Node root, String prefix, List<String> words) {
+        if (root == null)
+            return;
+
+        if (root.isEndOfWord())
+            words.add(prefix);
+
+        for (var child:root.getChildren())
+            autoComplete(child, prefix+child.value, words);
+    }
+
+    private Node findLastNodeOf(String prefix) {
+        if (prefix == null)
+            return null;
+
+        var current = root;
+        for (var ch:prefix.toCharArray()) {
+            var child = current.getChild(ch);
+            if (child == null)
+                return null;
+            current = child;
+        }
+        return current;
+    }
+
     public boolean contains(String word) {
         return word != null && contains(root, word, 0);
     }
@@ -60,6 +104,32 @@ public class Tries {
 
         var ch = word.toCharArray()[index];
         return root.hasChild(ch) && contains(root.getChild(ch), word, ++index);
+    }
+
+    public void remove(String word) {
+        if (word == null)
+            return;
+
+        remove(root, word, 0);
+    }
+
+    private void remove(Node root, String word, int index) {
+        if (index == word.length()) {
+            root.removeWord();
+            return;
+        }
+
+        var ch = word.toCharArray()[index];
+        var child = root.getChild(ch);
+        if (child == null)
+            return;
+
+        remove(child, word, ++index);
+
+        if (!child.isEndOfWord() && !child.hasChildren()) {
+            root.removeChar(ch);
+            return;
+        }
     }
 
     public void traversal(String type) {
