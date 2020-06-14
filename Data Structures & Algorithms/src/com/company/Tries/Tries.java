@@ -94,6 +94,37 @@ public class Tries {
         return current;
     }
 
+    public int countWords() {
+        return countWords(root, 0);
+    }
+
+    private int countWords(Node root, int count) {
+        if (root.isEndOfWord)
+            count++;
+
+        for (var child:root.getChildren()) {
+            count = countWords(child, count);
+        }
+
+        return count;
+    }
+
+    public static String longestCommonPrefix(String[] input) {
+        var trie = new Tries();
+        for (var word:input)
+            trie.insert(word);
+
+        return longestCommonPrefix(trie.root, new StringBuffer());
+    }
+
+    private static String longestCommonPrefix(Node root, StringBuffer output) {
+        if (root.isEndOfWord || root.numberOfChildren() != 1)
+            return output.append(root.value).toString();
+
+        var child = root.getChildren()[0];
+        return longestCommonPrefix(child, output.append(root.value));
+    }
+
     public boolean contains(String word) {
         return word != null && contains(root, word, 0);
     }
@@ -103,7 +134,8 @@ public class Tries {
             return root.isEndOfWord;
 
         var ch = word.toCharArray()[index];
-        return root.hasChild(ch) && contains(root.getChild(ch), word, ++index);
+        var child = root.getChild(ch);
+        return root.hasChild(ch) && contains(child, word, ++index);
     }
 
     public void remove(String word) {
@@ -151,6 +183,18 @@ public class Tries {
             traversalPostOrder(child);
 
         System.out.println(root.value);
+    }
+
+    public void printWords() {
+        printWords(root, "");
+    }
+
+    private void printWords(Node root, String word) {
+        if (root.isEndOfWord)
+            System.out.println(word);
+
+        for (var child : root.getChildren())
+            printWords(child, word + child.value);
     }
 
     @Override
