@@ -8,7 +8,8 @@ package com.company;
 //import com.company.BinaryTrees.Demo;
 //import com.company.AVLTrees.Demo;
 //import com.company.Heaps.Demo;
-import com.company.Tries.Demo;
+//import com.company.Tries.Demo;
+import com.company.Graphs.Demo;
 
 public class Main {
 
